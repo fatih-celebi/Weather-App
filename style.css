@@ -14,7 +14,7 @@ body {
     color: white;
 }
 
-.location, .temperature{
+.location, .temperature-kelvin {
     flex-direction: row;
     height: 30vh;
     width: 30%;

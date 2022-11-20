@@ -2,8 +2,8 @@ window.addEventListener("load", () => {
     let long;
     let lat;
 
-    let temperatureDegree = document.querySelector(".temperature-degree");
-    let temperatureFeelsLike = document.querySelector(".temperature-feels-like");
+    let temperatureDegreeKelvin = document.querySelector(".temperature-degree-kelvin");
+    let temperatureFeelsLikeKelvin = document.querySelector(".temperature-feels-like-kelvin");
     let location = document.querySelector(".location-timezone");
 
     if (navigator.geolocation) {
@@ -19,13 +19,21 @@ window.addEventListener("load", () => {
             .then(data => {
                 console.log(data);
                 let {temp, feels_like} = data.main;
-                temperatureDegree.textContent = temp;
-                temperatureFeelsLike.textContent = feels_like;
+                temperatureDegreeKelvin.textContent = temp;
+                temperatureFeelsLikeKelvin.textContent = feels_like;
                 location.textContent = data.name;
+
+                // Add button and a function displaying temperature in Celsius
+                let showCelsiusButton = document.querySelector(".show-celsius");
+                let temperatureDegreeCelsius = document.querySelector(".temperature-degree-celsius");
+
+                showCelsiusButton.addEventListener("click", () => {
+                    let degreeInCelsius = Math.round(temp - 273);
+                    temperatureDegreeCelsius.textContent = `It is ${degreeInCelsius} C :))`
+                })
             })
         })
     } else {
         h1.textContent = "Sorry, this isn`t working";
-    }
-
+    } 
 });
