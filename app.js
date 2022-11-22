@@ -19,7 +19,7 @@ window.addEventListener("load", () => {
             .then(data => {
                 console.log(data);
                 let {temp, feels_like} = data.main;
-                temperatureDegreeKelvin.textContent = temp;
+                temperatureDegreeKelvin.textContent = temp.toFixed(1);
                 temperatureFeelsLikeKelvin.textContent = feels_like;
                 location.textContent = data.name;
 
